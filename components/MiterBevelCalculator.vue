@@ -2,15 +2,19 @@
 import { defineEmits } from "vue";
 
 // Miter and Bevel
+//// vars
 const wall = ref(0);
 const spring = ref(0);
-
 let miterOutput = ref(null);
 let bevelOutput = ref(null);
 
+// Computed
+const showResults = computed(() => wall.value > 0 && spring.value > 0);
+
+// methods
 function miterAndBevelCalculator() {
-  const angle_rad1 = parseFloat(wall) * ((2 * Math.PI) / 360);
-  const angle_rad2 = parseFloat(spring) * ((2 * Math.PI) / 360);
+  const angle_rad1 = parseFloat(wall.value) * ((2 * Math.PI) / 360);
+  const angle_rad2 = parseFloat(spring.value) * ((2 * Math.PI) / 360);
   const miter =
     Math.atan(Math.sin(angle_rad2) / Math.tan(angle_rad1 / 2)) /
     ((2 * Math.PI) / 360);
@@ -58,6 +62,8 @@ const emitToggle = defineEmits(["toggleSpring"]);
     <button @click.prevent="emitToggle('toggle-spring')">
       Need help finding the spring?
     </button>
-    <p>Miter Angle: {{ miterOutput }} Bevel Angle: {{ bevelOutput }}</p>
+    <p v-if="showResults">
+      Miter Angle: {{ miterOutput }}&#176; Bevel Angle: {{ bevelOutput }}&#176;
+    </p>
   </div>
 </template>

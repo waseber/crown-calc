@@ -1,6 +1,4 @@
 <script setup>
-import { ref } from "vue";
-
 // Spring Logic
 const sideA = ref(0);
 const sideB = ref(0);
@@ -16,6 +14,7 @@ function springCalculator() {
 <template>
   <div>
     <h2>Spring Calculator</h2>
+    <h4>It's trigonometry, stupid!</h4>
     <form>
       <label for="sideA">
         Height Along the Wall:
@@ -39,6 +38,6 @@ function springCalculator() {
         />
       </label>
     </form>
-    Spring: {{ springOutput }}
+    Spring: {{ springOutput }}&#176;
   </div>
 </template>
