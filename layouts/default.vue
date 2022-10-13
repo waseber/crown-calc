@@ -1,12 +1,11 @@
 <template>
   <div>
-    <!-- <header>
+    <header>
       <slot name="header" />
-    </header> -->
-
+    </header>
     <slot name="hidden" />
     <main>
-      <slot name="main" />
+      <slot />
     </main>
   </div>
 </template>
