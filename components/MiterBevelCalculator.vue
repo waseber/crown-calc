@@ -1,4 +1,6 @@
 <script setup>
+import { defineEmits } from "vue";
+
 // Miter and Bevel
 const wall = ref(0);
 const spring = ref(0);
@@ -19,6 +21,9 @@ function miterAndBevelCalculator() {
   miterOutput.value = miter.toFixed(2);
   bevelOutput.value = bevel.toFixed(2);
 }
+
+// emit toggle
+const emitToggle = defineEmits(["toggleSpring"]);
 </script>
 
 <template>
@@ -50,6 +55,9 @@ function miterAndBevelCalculator() {
         @input="miterAndBevelCalculator"
       />
     </label>
+    <button @click.prevent="emitToggle('toggle-spring')">
+      Need help finding the spring?
+    </button>
     <p>Miter Angle: {{ miterOutput }} Bevel Angle: {{ bevelOutput }}</p>
   </div>
 </template>

@@ -3,6 +3,8 @@ import { ref } from "vue";
 import Header from "~~/components/Header.vue";
 import SpringCalculator from "~~/components/SpringCalculator.vue";
 import MiterBevelCalculator from "~~/components/MiterBevelCalculator.vue";
+
+const toggleSpring = ref(false);
 </script>
 
 <template>
@@ -10,9 +12,9 @@ import MiterBevelCalculator from "~~/components/MiterBevelCalculator.vue";
     <NuxtLayout name="default">
       <Header #header />
 
-      <spring-calculator #hidden />
+      <spring-calculator v-if="toggleSpring" #aside />
 
-      <miter-bevel-calculator />
+      <miter-bevel-calculator @toggle-spring="toggleSpring = true" />
     </NuxtLayout>
   </div>
 </template>

@@ -3,7 +3,9 @@
     <header>
       <slot name="header" />
     </header>
-    <slot name="hidden" />
+    <aside>
+      <slot name="aside" />
+    </aside>
     <main>
       <slot />
     </main>
