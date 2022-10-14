@@ -1,11 +1,11 @@
-<script setup>
+<script setup lang="ts">
 // Spring Logic
 const sideA = ref(0);
 const sideB = ref(0);
 let springOutput = ref(null);
 
 function springCalculator() {
-  const tan = Math.atan(parseFloat(sideA.value) / parseFloat(sideB.value));
+  const tan = Math.atan(sideA.value / sideB.value);
   const tanDeg = (tan * 180) / Math.PI;
   springOutput.value = tanDeg.toFixed(2);
 }

@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { defineEmits } from "vue";
 
 // Miter and Bevel
@@ -13,8 +13,8 @@ const showResults = computed(() => wall.value > 0 && spring.value > 0);
 
 // methods
 function miterAndBevelCalculator() {
-  const angle_rad1 = parseFloat(wall.value) * ((2 * Math.PI) / 360);
-  const angle_rad2 = parseFloat(spring.value) * ((2 * Math.PI) / 360);
+  const angle_rad1 = wall.value * ((2 * Math.PI) / 360);
+  const angle_rad2 = spring.value * ((2 * Math.PI) / 360);
   const miter =
     Math.atan(Math.sin(angle_rad2) / Math.tan(angle_rad1 / 2)) /
     ((2 * Math.PI) / 360);
