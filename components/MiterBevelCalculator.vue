@@ -1,15 +1,56 @@
 <script setup lang="ts">
-import { defineEmits } from "vue";
+import { defineEmits, watch } from "vue";
 
 // Miter and Bevel
 //// vars
+enum springOptionsValue {
+  DEFAULT = 0,
+  FIRST = 38,
+  SECOND = 45,
+  CUSTOM = 1,
+}
+
+enum springOptionsText {
+  DEFAULT = "Common Springs",
+  FIRST = "38/52",
+  SECOND = "45/45",
+  CUSTOM = "Custom",
+}
+
+const springOptions = reactive([
+  {
+    text: springOptionsText.DEFAULT,
+    value: springOptionsValue.DEFAULT,
+  },
+  {
+    text: springOptionsText.FIRST,
+    value: springOptionsValue.FIRST,
+  },
+  {
+    text: springOptionsText.SECOND,
+    value: springOptionsValue.SECOND,
+  },
+  {
+    text: springOptionsText.CUSTOM,
+    value: springOptionsValue.CUSTOM,
+  },
+]);
+
 const wall = ref(0);
 const spring = ref(0);
+const showSpringText = ref(false);
 let miterOutput = ref(null);
 let bevelOutput = ref(null);
 
 // Computed
 const showResults = computed(() => wall.value > 0 && spring.value > 0);
+
+// watch spring options
+watch(spring, (currentVal, oldVal) => {
+  if (currentVal === 1) {
+    showSpringText.value = true;
+  }
+});
 
 // methods
 function miterAndBevelCalculator() {
@@ -51,7 +92,17 @@ const emitToggle = defineEmits(["toggleSpring"]);
 
     <label for="spring">
       Spring:
+      <select v-model="spring">
+        <option
+          v-for="(option, idx) in springOptions"
+          :value="option.value"
+          :key="idx"
+        >
+          {{ option.text }}
+        </option>
+      </select>
       <input
+        v-show="showSpringText"
         type="text"
         name="spring"
         id="spring"
