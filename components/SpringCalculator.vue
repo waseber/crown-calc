@@ -16,7 +16,7 @@ const emitToggle = defineEmits(["toggleSpring"]);
 </script>
 
 <template>
-  <div class="m-10 p-5 bg-gray-400 bg-opacity-60 rounded-xl">
+  <div class="m-5 p-5 bg-gray-400 bg-opacity-60 rounded-xl">
     <div class="flex justify-between">
       <h2 class="text-xl text-white">Spring Calculator</h2>
       <button
@@ -27,6 +27,10 @@ const emitToggle = defineEmits(["toggleSpring"]);
       </button>
     </div>
     <h4 class="italic text-white">It's trigonometry, stupid!</h4>
+    <h4 class="italic text-white">
+      Where the wall angle is the angle between the wall and the ceiling, the
+      spring is the bottom angle.
+    </h4>
     <form class="mt-5 flex">
       <label for="sideA" class="mr-4">
         <div class="text-white">Height Along the Wall:</div>

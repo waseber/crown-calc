@@ -72,7 +72,7 @@ const emitToggle = defineEmits(["toggleSpring"]);
 </script>
 
 <template>
-  <div class="m-10 p-5 bg-gray-400 bg-opacity-60 rounded-xl text-white">
+  <div class="m-5 p-5 bg-gray-400 bg-opacity-60 rounded-xl text-white">
     <h2 class="text-xl">Miter and Bevel</h2>
     <h4 class="italic">
       This method assumes you are laying the crown molding flat with the top of
