@@ -72,47 +72,55 @@ const emitToggle = defineEmits(["toggleSpring"]);
 </script>
 
 <template>
-  <div>
-    <h2>Miter and Bevel</h2>
-    <h4>
+  <div class="p-5 text-white">
+    <h2 class="text-xl">Miter and Bevel</h2>
+    <h4 class="italic">
       This method assumes you are laying the crown molding flat with the top of
       the molding against the fence.
     </h4>
 
-    <label for="wall">
-      Wall Angle:
-      <input
-        type="text"
-        name="wall"
-        id="wall"
-        v-model="wall"
-        @input="miterAndBevelCalculator"
-      />
-    </label>
+    <div class="flex">
+      <label for="wall" class="mr-4 flex flex-col">
+        <span>Wall Angle:</span>
+        <input
+          type="text"
+          name="wall"
+          id="wall"
+          class="my-2 p-2 border-solid border-2 rounded-lg border-gray-800 text-black"
+          v-model="wall"
+          @input="miterAndBevelCalculator"
+        />
+      </label>
 
-    <label for="spring">
-      Spring:
-      <select v-model="spring">
-        <option
-          v-for="(option, idx) in springOptions"
-          :value="option.value"
-          :key="idx"
+      <label for="spring" class="flex flex-col">
+        <span>Spring:</span>
+        <select
+          v-model="spring"
+          class="my-2 p-2 border-solid border-2 rounded-lg border-gray-800 text-black"
         >
-          {{ option.text }}
-        </option>
-      </select>
-      <input
-        v-show="showSpringText"
-        type="text"
-        name="spring"
-        id="spring"
-        v-model="spring"
-        @input="miterAndBevelCalculator"
-      />
-    </label>
-    <button @click.prevent="emitToggle('toggle-spring')">
-      Need help finding the spring?
-    </button>
+          <option
+            v-for="(option, idx) in springOptions"
+            :value="option.value"
+            :key="idx"
+          >
+            {{ option.text }}
+          </option>
+        </select>
+        <input
+          v-show="showSpringText"
+          type="text"
+          name="spring"
+          id="spring"
+          class="my-2 p-2 border-solid border-2 rounded-lg border-gray-800 text-black"
+          v-model="spring"
+          @input="miterAndBevelCalculator"
+        />
+      </label>
+      <button class="ml-4" @click.prevent="emitToggle('toggle-spring')">
+        Need help finding the spring?
+      </button>
+    </div>
+
     <p v-if="showResults">
       Miter Angle: {{ miterOutput }}&#176; Bevel Angle: {{ bevelOutput }}&#176;
     </p>

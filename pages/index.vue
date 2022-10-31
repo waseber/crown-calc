@@ -8,13 +8,15 @@ const toggleSpring = ref(false);
 </script>
 
 <template>
-  <div>
-    <NuxtLayout name="default">
-      <Header #header />
+  <NuxtLayout background="url(../assets/img/saw.jpg)">
+    <template #header>
+      <Header />
+    </template>
 
-      <spring-calculator v-if="toggleSpring" #aside />
+    <template #aside>
+      <spring-calculator v-if="toggleSpring" />
+    </template>
 
-      <miter-bevel-calculator @toggle-spring="toggleSpring = true" />
-    </NuxtLayout>
-  </div>
+    <miter-bevel-calculator @toggle-spring="toggleSpring = true" />
+  </NuxtLayout>
 </template>
