@@ -13,10 +13,10 @@ const toggleSpring = ref(false);
       <Header />
     </template>
 
-    <template #aside>
-      <spring-calculator v-if="toggleSpring" />
+    <template v-if="toggleSpring" #aside>
+      <spring-calculator @toggle-spring="toggleSpring = false" />
     </template>
 
-    <miter-bevel-calculator @toggle-spring="toggleSpring = true" />
+    <miter-bevel-calculator @toggle-spring="toggleSpring = !toggleSpring" />
   </NuxtLayout>
 </template>

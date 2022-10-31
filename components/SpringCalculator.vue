@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { defineEmits } from "vue";
 // Spring Logic
 const sideA = ref(0);
 const sideB = ref(0);
@@ -9,13 +10,24 @@ function springCalculator() {
   const tanDeg = (tan * 180) / Math.PI;
   springOutput.value = tanDeg.toFixed(2);
 }
+
+// emit toggle
+const emitToggle = defineEmits(["toggleSpring"]);
 </script>
 
 <template>
-  <div class="p-5">
-    <h2 class="text-xl text-white">Spring Calculator</h2>
+  <div class="m-10 p-5 bg-gray-400 bg-opacity-60 rounded-xl">
+    <div class="flex justify-between">
+      <h2 class="text-xl text-white">Spring Calculator</h2>
+      <button
+        class="-mt-10 -mr-3 text-4xl text-white"
+        @click.prevent="emitToggle('toggle-spring')"
+      >
+        &times;
+      </button>
+    </div>
     <h4 class="italic text-white">It's trigonometry, stupid!</h4>
-    <form class="flex">
+    <form class="mt-5 flex">
       <label for="sideA" class="mr-4">
         <div class="text-white">Height Along the Wall:</div>
         <input
@@ -40,6 +52,8 @@ function springCalculator() {
         />
       </label>
     </form>
-    <p class="text-white">Spring: {{ springOutput }}&#176;</p>
+    <p v-if="sideA > 0 && sideB > 0" class="text-white">
+      Spring: {{ springOutput }}&#176;
+    </p>
   </div>
 </template>

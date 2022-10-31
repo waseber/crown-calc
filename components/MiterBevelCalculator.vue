@@ -72,14 +72,14 @@ const emitToggle = defineEmits(["toggleSpring"]);
 </script>
 
 <template>
-  <div class="p-5 text-white">
+  <div class="m-10 p-5 bg-gray-400 bg-opacity-60 rounded-xl text-white">
     <h2 class="text-xl">Miter and Bevel</h2>
     <h4 class="italic">
       This method assumes you are laying the crown molding flat with the top of
       the molding against the fence.
     </h4>
 
-    <div class="flex">
+    <div class="mt-5 flex">
       <label for="wall" class="mr-4 flex flex-col">
         <span>Wall Angle:</span>
         <input
@@ -116,7 +116,10 @@ const emitToggle = defineEmits(["toggleSpring"]);
           @input="miterAndBevelCalculator"
         />
       </label>
-      <button class="ml-4" @click.prevent="emitToggle('toggle-spring')">
+      <button
+        class="ml-4 underline"
+        @click.prevent="emitToggle('toggle-spring')"
+      >
         Need help finding the spring?
       </button>
     </div>

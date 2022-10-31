@@ -12,7 +12,15 @@ const backgroundClasses = computed(() => {
 <template>
   <div
     :style="background ? `background-image: ${background}` : ''"
-    :class="['min-w-full', 'min-h-screen', 'bg-gray-300', backgroundClasses]"
+    :class="[
+      'flex',
+      'w-screen',
+      'h-screen',
+      'items-center',
+      'justify-center',
+      'bg-gray-600',
+      backgroundClasses,
+    ]"
   >
     <div class="mx-auto bg-gray-900 bg-opacity-70">
       <header>
